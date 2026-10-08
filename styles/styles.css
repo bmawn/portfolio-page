@@ -1,0 +1,264 @@
+:root {
+  --dust-grey: #d3d3d3ff;
+  --charcoal: rgb(172, 172, 172);
+  --gunmetal: #373938ff;
+  --black: #020101ff;
+  --burnt-peach: #e87e5aff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  flex: 1;
+  background-color: rgb(170, 170, 170);
+  text-align: center;
+}
+
+body {
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  background-color: var(--burnt-peach);
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--burnt-peach);
+  padding-left: 10px;
+  padding-right: 30px;
+}
+
+.navbar-logo-container {
+  transform: translate(-15px, -10px);
+}
+
+.navbar-logo-img {
+  height: 100%;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 1rem;
+  list-style-type: none;
+  margin: 0;
+}
+
+.nav-link {
+  color: black;
+  font-size: large;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: var(--dust-grey);
+}
+
+.page-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.welcome-logo {
+  display: block;
+  width: min(300px, 60vw);
+  height: auto;
+  margin: 0.5rem auto;
+}
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 600px;
+  max-width: calc(100vw - 2rem);
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font: inherit;
+  border: 1px solid var(--charcoal);
+  border-radius: 6px;
+}
+
+.contact-form textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.contact-form input[type="submit"] {
+  width: 50%;
+  align-self: flex-end;
+  padding: 0.75rem;
+  font: inherit;
+  color: var(--dust-grey);
+  background-color: var(--black);
+  border: 1px solid var(--gunmetal);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contact-form input[type="submit"]:hover {
+  background-color: var(--burnt-peach);
+}
+
+.project-card {
+  border: 1px solid var(--DeepSpaceBlue);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.topic-card {
+  border: 1px solid var(--charcoal);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.carousel {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 16/12;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.carousel-inner,
+.carousel-item {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.carousel-item a {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.carousel-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Fick massvis med kontrastfel på pilarna i karusellen så jag valde att ändra färg på dessa
+nya klasser behövs därmed implementeras */
+
+.carousel .carousel-control-prev,
+.carousel .carousel-control-next {
+  opacity: 1;
+}
+
+.carousel .carousel-control-prev-icon,
+.carousel .carousel-control-next-icon {
+  width: 3rem;
+  height: 3rem;
+  padding: 0.75rem;
+  background-color: var(--black);
+  background-size: 55% 55%;
+  border-radius: 50%;
+}
+
+.carousel .carousel-control-prev:focus-visible,
+.carousel .carousel-control-next:focus-visible {
+  outline: 3px solid white;
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition,
+  .page-transition.is-leaving {
+    animation: none;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .topics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .topics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.splash-body {
+  height: 100vh;
+  background-color: #373938ff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.splash-image {
+  max-width: 90vw;
+  max-height: 60vw;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.page-transition {
+  animation: page-fade-in 0.6s ease forwards;
+}
+
+.page-transition.is-leaving {
+  animation: page-fade-out 0.35s ease forwards;
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes page-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

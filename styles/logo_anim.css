@@ -1,0 +1,101 @@
+/* @keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-animation {
+  animation: spin 4s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+} */
+/* @keyframes bounce-logo {
+  0%,
+  100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.3, 0, 0.8, 0.15);
+  }
+  50% {
+    transform: translateY(60px);
+    animation-timing-function: cubic-bezier(0, 0.7, 0.45, 1);
+  }
+  55% {
+    transform: translateY(60px) scaleY(0.8) scaleX(1.1);
+  }
+  65% {
+    transform: translateY(50px) scaleY(1.05) scaleX(0.95);
+  }
+  100% {
+    transform: translateY(0) scaleY(1) scaleX(1);
+  }
+} */
+
+/* Jag experimneterade med både snurrande och studsande logotyper,
+ men det blev gammalt och distrahernade väldigt snabbt. 
+Slutligen nöjde jag mig med en "blänkande" logotyp som inte alls
+ var lika distraherande men fortfarande väldigt snygg.  
+Lärde mig massor om t.ex ease 
+in/out
+transform
+transition
+animation 
+osv.
+*/
+
+.bouncing-logo {
+  display: block;
+  width: 150px;
+  height: auto;
+  animation: none;
+  transform-origin: center;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.index-logo {
+  animation: logo-shine 1.3s ease-in-out 1;
+  animation-fill-mode: both;
+}
+
+.bouncing-logo:hover {
+  animation: logo-hover-shine 0.8s ease-in-out infinite;
+}
+
+.navbar-brand:hover .bouncing-logo {
+  animation: logo-hover-shine 0.8s ease-in-out infinite;
+}
+
+@keyframes logo-shine {
+  0%,
+  100% {
+    filter: brightness(1) drop-shadow(0 0 0 transparent);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.8) drop-shadow(0 0 12px #ffffff);
+    transform: scale(1.08);
+  }
+}
+
+@keyframes logo-hover-shine {
+  0%,
+  100% {
+    filter: brightness(1) drop-shadow(0 0 0 transparent);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.8) drop-shadow(0 0 12px #ffffff);
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bouncing-logo {
+    animation: none;
+  }
+}

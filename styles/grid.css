@@ -1,0 +1,131 @@
+.box-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6px;
+}
+
+@media screen and (min-width: 640px) {
+  .box-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.box {
+  overflow: hidden;
+  background-color: var(--dust-grey);
+  border: 1px solid var(--gunmetal);
+  border-radius: 6px;
+}
+
+.box img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 6px;
+  background-color: var(--gunmetal);
+}
+
+.box a {
+  display: block;
+  padding: 5px;
+  color: var(--gunmetal);
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.project-logs {
+  position: relative;
+  min-height: 1120px;
+}
+
+.log-entry {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: min(500px, 90%);
+}
+
+.log-entry a {
+  align-self: start;
+  color: var(--gunmetal);
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.log-entry a:hover {
+  color: var(--burnt-peach);
+}
+
+.log-entry img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 6px;
+  background-color: var(--gunmetal);
+}
+
+/* Ville slänga upp bilderna för projekten med hjälp av position eftersom att vi gick igenom det.
+Här lärde jag mig något vi inte gick igenom: nth of type
+https://www.w3schools.com/cssref/sel_nth-of-type.php
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:nth-of-type
+Perfekt för att linea upp bilderna och texten exempelvis varannan på olika position!
+För att få till så att texten följde med fick jag även göra en ny klass i form av .log-entry.
+Mycket pill för att få det att fungera med mobilskärm osv.
+*/
+
+.log-entry:nth-of-type(odd) {
+  left: 5%;
+}
+
+.log-entry:nth-of-type(even) {
+  right: 5%;
+}
+
+.log-entry:nth-of-type(even) a {
+  align-self: flex-end;
+}
+
+.log-entry:nth-of-type(1) {
+  top: 50px;
+}
+
+.log-entry:nth-of-type(2) {
+  top: 250px;
+}
+
+.log-entry:nth-of-type(3) {
+  top: 500px;
+}
+
+.log-entry:nth-of-type(4) {
+  top: 750px;
+}
+
+@media screen and (max-width: 780px) {
+  .project-logs {
+    min-height: auto;
+  }
+
+  .log-entry {
+    position: static;
+    width: 100%;
+    margin: 1rem auto;
+  }
+
+  .log-entry img {
+    width: 80%;
+  }
+
+  .log-entry a,
+  .log-entry:nth-of-type(even) a {
+    align-self: center;
+    text-align: center;
+  }
+}
